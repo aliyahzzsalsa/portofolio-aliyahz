@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me | Aliyah</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">
+    Aliyah <span class="salsabila-text">Salsabila</span>
+</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="project.html">Project</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container" style="margin-top: 150px; margin-bottom: 100px;">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center mb-5">
+            <h2 class="fw-bold display-6">Let's <span style="color: var(--primary-blue)">Connect</span></h2>
+            <p class="text-muted">Kirimkan pesan melalui email untuk kerja sama yang lebih formal.</p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="contact-card p-4 shadow-sm border rounded">
+                <form id="contactForm">
+                    <div class="mb-4">
+                        <label class="fw-bold mb-2">Nama Lengkap</label>
+                        <input type="text" name="from_name" id="userName" class="form-control py-2" placeholder="Masukkan Nama Anda" required>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="fw-bold mb-2">Email Anda</label>
+                        <input type="email" name="user_email" id="userEmail" class="form-control py-2" placeholder="nama@email.com" required>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="fw-bold mb-2">Pesan</label>
+                        <textarea name="message" id="userMessage" class="form-control" rows="5" placeholder="Apa yang ingin kamu sampaikan?" required></textarea>
+                    </div>
+                    
+                    <button type="submit" id="btnSend" class="btn-send mt-2 w-100 py-3 text-black fw-bold">Kirim ke Email</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="footer-logo mb-3">Aliyah Salsabila<span style="color: #007bff;">.</span></div>
+                <div class="contact-info d-flex flex-column gap-2">
+                    <p class="text-muted mb-0"><i class="fas fa-envelope contact-icon"></i> aliyahzzsalsa259@gmail.com</p>
+                    <p class="text-muted mb-0"><i class="fab fa-whatsapp contact-icon"></i> +62 831 2350 0258</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 ps-md-5">
+                <h6 class="fw-bold mb-4">Quick Links</h6>
+                <div class="d-flex flex-column gap-2"> 
+                    <a href="index.html" class="quick-link text-decoration-none text-muted">Home</a>
+                    <a href="about.html" class="quick-link text-decoration-none text-muted">About</a>
+                    <a href="project.html" class="quick-link text-decoration-none text-muted">Projects</a>
+                    <a href="contact.html" class="quick-link text-decoration-none text-muted">Contact</a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h6 class="fw-bold mb-4">Let's Connect</h6>
+                <div class="d-flex gap-3">
+                    <a href="https://instagram.com/aliyahssalsaaa" target="_blank" class="social-icon-box"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/in/AliyahSalsabila" target="_blank" class="social-icon-box"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/aliyahzzsalsa" target="_blank" class="social-icon-box"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-4 opacity-25"> 
+        <div class="copyright text-center pb-4">
+            <p class="text-muted mb-0">&copy; 2026 Aliyah Salsabila</p>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script src="script.js"></script>
+
+<script type="text/javascript">
+   (function(){
+
+      emailjs.init("O0Et9X7PKbdB3IY1G");
+   })();
+
+   document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const btn = document.getElementById('btnSend');
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sedang Mengirim...';
+      btn.disabled = true;
+
+      emailjs.sendForm('service_zyx505q', 'template_xai23br', this)
+        .then(function() {
+            alert('Mantap! Pesan sudah masuk ke email Aliyah.');
+            btn.innerHTML = 'Kirim ke Email';
+            btn.disabled = false;
+            document.getElementById('contactForm').reset(); 
+        }, function(error) {
+            alert('Yah, gagal kirim: ' + JSON.stringify(error));
+            btn.innerHTML = 'Kirim ke Email';
+            btn.disabled = false;
+        });
+   });
+</script>
+</body>
+</html>
